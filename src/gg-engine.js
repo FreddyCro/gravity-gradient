@@ -5,7 +5,9 @@ export const createGGEngine = ({
   wHeight,
   ggPositiveHalosConfig,
   ggNegativeHalosConfig,
+  debug,
 }) => {
+  console.log(debug);
   var Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
@@ -21,7 +23,7 @@ export const createGGEngine = ({
 
   // create a renderer
   var render = Render.create({
-    // element: ggContainer,
+    element: debug ? document.querySelector('body') : undefined,
     engine: engine,
     options: {
       width: wWidth,
