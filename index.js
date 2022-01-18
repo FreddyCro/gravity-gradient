@@ -33,13 +33,17 @@ const main = () => {
       const { positiveBoxes, negativeBoxes, engine } = createGGEngine({
         wWidth: config.wWidth,
         wHeight: config.wHeight,
-        ggPositiveHalosConfig,
-        ggNegativeHalosConfig,
+        config: {
+          ggPositiveHalosConfig,
+          ggNegativeHalosConfig,
+          gravityWeight: config.gravityWeight,
+          gravityUpdateRate: config.gravityUpdateRate,
+        },
         debug: config.debug,
+        useMouse: config.useMouse,
       });
 
       const boxesController = new AbortController();
-      const gravityController = new AbortController();
 
       animationInterval(
         config.boxesUpdateRate,
@@ -92,16 +96,6 @@ const main = () => {
               halo.style.opacity = e.var.opacity;
             });
           });
-        }
-      );
-
-      animationInterval(
-        config.gravityUpdateRate,
-        gravityController.signal,
-        (time) => {
-          const gravity = engine.gravity;
-          gravity.x = (1 - Math.random() * 2) * config.gravityWeight;
-          gravity.y = (1 - Math.random() * 2) * config.gravityWeight;
         }
       );
     },

@@ -8,12 +8,13 @@ const gray = '245, 245, 245';
 const config = {
   breakpoint: 1024,
   backgroundColor: '#F5F5F5',
-  gravityWeight: 0.05,
+  gravityWeight: 0.1,
   boxesUpdateRate: 50,
-  gravityUpdateRate: 3000,
+  gravityUpdateRate: 5000,
   wWidth,
   wHeight,
   // debug: true,
+  // useMouse: true,
 };
 
 const ggHaloCommonStyle = {
@@ -35,8 +36,8 @@ const ggPositiveHalosConfig = [
       friction: 0.1,
     },
     style: {
-      left: '-75vw',
-      top: '-75vh',
+      left: '-50vw',
+      top: '-45vh',
       width: '100vw',
       height: '90vw',
       borderRadius: '60% 20%',
@@ -71,8 +72,8 @@ const ggPositiveHalosConfig = [
       friction: 0.1,
     },
     style: {
-      left: '-50vw',
-      top: '-100vh',
+      left: '-60vw',
+      top: '-90vh',
       width: '120vw',
       height: '180vh',
       borderRadius: '20% 100% 40%',
@@ -99,6 +100,64 @@ const ggPositiveHalosConfig = [
 ];
 
 const ggNegativeHalosConfig = [
+  {
+    physic: {
+      x: wWidth * 0.5,
+      y: wHeight * (1 - Math.random()),
+      w: wWidth * 0.1,
+      h: wWidth * 0.1,
+      density: 0.1,
+      friction: 0.1,
+    },
+    style: {
+      zIndex: 2,
+      left: '-50vw',
+      top: '-50vh',
+      width: '100vw',
+      height: '100vh',
+      borderRadius: '50% 70% 90% 10%',
+      background: `radial-gradient(
+        rgba(${gray}, 1),
+        rgba(${gray}, 0.7),
+        rgba(${gray}, 0),
+        rgba(${gray}, 0)
+      )`,
+    },
+    var: {
+      rotate: 90,
+      scale: 1,
+      opacity: 0.7,
+    },
+  },
+  {
+    physic: {
+      x: wWidth * 0.5,
+      y: wHeight * (1 - Math.random()),
+      w: wWidth * 0.1,
+      h: wWidth * 0.1,
+      density: 0.1,
+      friction: 0.1,
+    },
+    style: {
+      zIndex: 2,
+      left: '-50vw',
+      top: '-50vh',
+      width: '100vw',
+      height: '100vh',
+      borderRadius: '50% 70% 90% 10%',
+      background: `radial-gradient(
+        rgba(${gray}, 1),
+        rgba(${gray}, 0.7),
+        rgba(${gray}, 0),
+        rgba(${gray}, 0)
+      )`,
+    },
+    var: {
+      rotate: 90,
+      scale: 1,
+      opacity: 0.7,
+    },
+  },
   {
     physic: {
       x: wWidth * 0.5,
