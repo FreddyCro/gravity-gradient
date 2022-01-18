@@ -7,7 +7,6 @@ export const createGGEngine = ({
   ggNegativeHalosConfig,
   debug,
 }) => {
-  console.log(debug);
   var Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,

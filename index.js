@@ -59,8 +59,11 @@ const main = () => {
           ].forEach((item, boxesIndex) => {
             item.config.forEach((e, i) => {
               const halo = item.halos[i];
-              const x = item.boxes[i].position.x;
-              const y = item.boxes[i].position.y;
+              const translateRate =
+                e.const && e.const.translateRate ? e.const.translateRate : 1;
+
+              const x = item.boxes[i].position.x * translateRate;
+              const y = item.boxes[i].position.y * translateRate;
 
               e.var.rotate = rotateLoop({
                 start: e.var.rotate,
