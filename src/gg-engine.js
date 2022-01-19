@@ -102,6 +102,11 @@ export const createGGEngine = ({
       mouseConstraint.mouse.mousedown
     );
 
+    mouseConstraint.mouse.element.removeEventListener(
+      'mousewheel',
+      mouseConstraint.mouse.mousewheel
+    );
+
     Composite.add(engine.world, mouseConstraint);
 
     // keep the mouse in sync with rendering
@@ -120,13 +125,14 @@ export const createGGEngine = ({
       mouseConstraint,
       'mousemove',
       debounce((event) => {
-        const weight = 0.5;
+        const weight = 10;
         const newGravity =
-          (Math.abs(
-            event.mouse.position.x / wWidth + event.mouse.position.y / wHeight
-          ) /
+          ((Math.abs(wWidth / 2 - event.mouse.position.x) +
+            Math.abs(wHeight / 2 - event.mouse.position.y)) /
             2) *
+          0.0001 *
           weight;
+
         // quadrant 1
         if (
           event.mouse.position.x > wWidth * 0.5 &&
